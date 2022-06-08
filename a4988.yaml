@@ -8,9 +8,9 @@ substitutions:
   
 esphome: 
   includes: 
-    - stepper/steppercontroller.h
-    - stepper/stepper_modes.h
-    - stepper/stepper_error.h   
+    - esphome-stepper/steppercontroller.h
+    - esphome-stepper/stepper_modes.h
+    - esphome-stepper/stepper_error.h   
   on_shutdown:
     then:
       lambda: |-
