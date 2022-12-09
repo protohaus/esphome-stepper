@@ -178,4 +178,354 @@ sensor:
     lambda: |-
       return get_controller(id(${controller}))->plant_gear_rotation_angle();
     update_interval: ${sensor_update_interval_fast}  
+
+  - platform: template
+    name: ${stepper_motor_id_upper}.cam1.plant
+    id: ${stepper_motor_id}_cam1_plant
+    update_interval: 1s
+    lambda: |-
+      float tmp_angle = id(${stepper_motor_id}_angle).state;
+      float angle = tmp_angle / 360.0;
+      angle = angle - (int)angle;
+      angle = angle * 360.0;
+      
+      
+      if ((angle >= 330.0 && 
+          angle < 360.0 )||
+          (angle >= 0.0 && 
+          angle < 30.0)) 
+      {
+        return 1;
+      } else if (angle >= 30.0 && 
+                 angle < 90.0) 
+      {
+        return 6;
+      } else if (angle >= 90.0 && 
+                 angle < 150.0) 
+      {
+        return 5;
+      } else if (angle >= 150.0 && 
+                 angle < 210.0) 
+      {
+        return 4;
+      } else if (angle >= 210.0 && 
+                 angle < 270.0) 
+      {
+        return 3;
+      } else if (angle >= 270.0 && 
+                 angle < 330.0) 
+      {
+        return 2;
+      }
+      else
+      {
+        return 0;
+      }
+
+  - platform: template
+    name: ${stepper_motor_id_upper}.cam2.plant
+    id: ${stepper_motor_id}_cam2_plant
+    update_interval: 1s
+    lambda: |-
+      float tmp_angle = id(${stepper_motor_id}_angle).state;
+      float angle = tmp_angle / 360.0;
+      angle = angle - (int)angle;
+      angle = angle * 360.0;
+      
+      
+      if ((angle >= 330.0 && 
+          angle < 360.0 )||
+          (angle >= 0.0 && 
+          angle < 30.0)) 
+      {
+        return 2;
+      } else if (angle >= 30.0 && 
+                 angle < 90.0) 
+      {
+        return 1;
+      } else if (angle >= 90.0 && 
+                 angle < 150.0) 
+      {
+        return 6;
+      } else if (angle >= 150.0 && 
+                 angle < 210.0) 
+      {
+        return 5;
+      } else if (angle >= 210.0 && 
+                 angle < 270.0) 
+      {
+        return 4;
+      } else if (angle >= 270.0 && 
+                 angle < 330.0) 
+      {
+        return 3;
+      }
+      else
+      {
+        return 0;
+      }
+      
+  - platform: template
+    name: ${stepper_motor_id_upper}.cam3.plant
+    id: ${stepper_motor_id}_cam3_plant
+    update_interval: 1s
+    lambda: |-
+      float tmp_angle = id(${stepper_motor_id}_angle).state;
+      float angle = tmp_angle / 360.0;
+      angle = angle - (int)angle;
+      angle = angle * 360.0;
+      
+      
+      if ((angle >= 330.0 && 
+          angle < 360.0 )||
+          (angle >= 0.0 && 
+          angle < 30.0)) 
+      {
+        return 3;
+      } else if (angle >= 30.0 && 
+                 angle < 90.0) 
+      {
+        return 2;
+      } else if (angle >= 90.0 && 
+                 angle < 150.0) 
+      {
+        return 1;
+      } else if (angle >= 150.0 && 
+                 angle < 210.0) 
+      {
+        return 6;
+      } else if (angle >= 210.0 && 
+                 angle < 270.0) 
+      {
+        return 5;
+      } else if (angle >= 270.0 && 
+                 angle < 330.0) 
+      {
+        return 4;
+      }
+      else
+      {
+        return 0;
+      }
   
+  - platform: template
+    name: ${stepper_motor_id_upper}.cam4.plant
+    id: ${stepper_motor_id}_cam4_plant
+    update_interval: 1s
+    lambda: |-
+      float tmp_angle = id(${stepper_motor_id}_angle).state;
+      float angle = tmp_angle / 360.0;
+      angle = angle - (int)angle;
+      angle = angle * 360.0;
+      
+      
+      if ((angle >= 330.0 && 
+          angle < 360.0 )||
+          (angle >= 0.0 && 
+          angle < 30.0)) 
+      {
+        return 4;
+      } else if (angle >= 30.0 && 
+                 angle < 90.0) 
+      {
+        return 3;
+      } else if (angle >= 90.0 && 
+                 angle < 150.0) 
+      {
+        return 2;
+      } else if (angle >= 150.0 && 
+                 angle < 210.0) 
+      {
+        return 1;
+      } else if (angle >= 210.0 && 
+                 angle < 270.0) 
+      {
+        return 6;
+      } else if (angle >= 270.0 && 
+                 angle < 330.0) 
+      {
+        return 5;
+      }
+      else
+      {
+        return 0;
+      }
+
+  - platform: template
+    name: ${stepper_motor_id_upper}.cam5.plant
+    id: ${stepper_motor_id}_cam5_plant
+    update_interval: 1s
+    lambda: |-
+      float tmp_angle = id(${stepper_motor_id}_angle).state;
+      float angle = tmp_angle / 360.0;
+      angle = angle - (int)angle;
+      angle = angle * 360.0;
+      
+      
+      if ((angle >= 330.0 && 
+          angle < 360.0 )||
+          (angle >= 0.0 && 
+          angle < 30.0)) 
+      {
+        return 5;
+      } else if (angle >= 30.0 && 
+                 angle < 90.0) 
+      {
+        return 4;
+      } else if (angle >= 90.0 && 
+                 angle < 150.0) 
+      {
+        return 3;
+      } else if (angle >= 150.0 && 
+                 angle < 210.0) 
+      {
+        return 2;
+      } else if (angle >= 210.0 && 
+                 angle < 270.0) 
+      {
+        return 1;
+      } else if (angle >= 270.0 && 
+                 angle < 330.0) 
+      {
+        return 6;
+      }
+      else
+      {
+        return 0;
+      }
+
+  - platform: template
+    name: ${stepper_motor_id_upper}.cam6.plant
+    id: ${stepper_motor_id}_cam6_plant
+    update_interval: 1s
+    lambda: |-
+      float tmp_angle = id(${stepper_motor_id}_angle).state;
+      float angle = tmp_angle / 360.0;
+      angle = angle - (int)angle;
+      angle = angle * 360.0;
+      
+      
+      if ((angle >= 330.0 && 
+          angle < 360.0 )||
+          (angle >= 0.0 && 
+          angle < 30.0)) 
+      {
+        return 6;
+      } else if (angle >= 30.0 && 
+                 angle < 90.0) 
+      {
+        return 5;
+      } else if (angle >= 90.0 && 
+                 angle < 150.0) 
+      {
+        return 4;
+      } else if (angle >= 150.0 && 
+                 angle < 210.0) 
+      {
+        return 3;
+      } else if (angle >= 210.0 && 
+                 angle < 270.0) 
+      {
+        return 2;
+      } else if (angle >= 270.0 && 
+                 angle < 330.0) 
+      {
+        return 1;
+      }
+      else
+      {
+        return 0;
+      }
+ 
+      
+  #
+  #
+  # !!!attention:following code somehow causing crashes.... dont know why!!!!
+  #
+  #
+  #- platform: template
+  #  name: ${stepper_motor_id_upper}.plantposition
+  #  id: ${stepper_motor_id}_plantposition
+  #  update_interval: 1s
+  #  lambda: |-
+  #    float angle = id(${stepper_motor_id}_angle).state;
+  #    
+  #    if ((angle >= 1050.0 && 
+  #        angle < 1080.0 )||
+  #        (angle >= 0.0 && 
+  #        angle < 30.0)) 
+  #    {
+  #      return 1;
+  #    } else if (angle >= 30.0 && 
+  #               angle < 90.0) 
+  #    {
+  #      return 2;
+  #    } else if (angle >= 90.0 && 
+  #               angle < 150.0) 
+  #    {
+  #      return 3;
+  #    } else if (angle >= 150.0 && 
+  #               angle < 210.0) 
+  #    {
+  #      return 4;
+  #    } else if (angle >= 210.0 && 
+  #               angle < 270.0) 
+  #    {
+  #      return 5;
+  #    } else if (angle >= 270.0 && 
+  #               angle < 330.0) 
+  #    {
+  #      return 6;
+  #    } else if (angle >= 330.0 && 
+  #               angle < 390.0) 
+  #    {
+  #      return 7;
+  #    } else if (angle >= 390.0 && 
+  #               angle < 450.0) 
+  #    {
+  #      return 8;
+  #    } else if (angle >= 450.0 && 
+  #               angle < 510.0) 
+  #    {
+  #      return 9;
+  #    } else if (angle >= 510.0 && 
+  #               angle < 570.0) 
+  #    {
+  #      return 1;
+  #    } else if (angle >= 570.0 && 
+  #               angle < 630.0) 
+  #    {
+  #      return 2;
+  #    } else if (angle >= 630.0 && 
+  #               angle < 690.0) 
+  #    {
+  #      return 3;
+  #    } else if (angle >= 690.0 && 
+  #               angle < 750.0) 
+  #    {
+  #      return 4;
+  #    } else if (angle >= 750.0 && 
+  #               angle < 810.0) 
+  #    {
+  #      return 5;
+  #    } else if (angle >= 810.0 && 
+  #               angle < 870.0) 
+  #    {
+  #      return 6;
+  #    } else if (angle >= 870.0 && 
+  #               angle < 930.0) 
+  #    {
+  #      return 7;
+  #    } else if (angle >= 930.0 && 
+  #               angle < 990.0) 
+  #    {
+  #      return 8;
+  #    } else if (angle >= 990.0 && 
+  #               angle < 1050.0) 
+  #    {
+  #      return 9;
+  #    }
+  #    else
+  #    {
+  #      return 0;
+  #    }
