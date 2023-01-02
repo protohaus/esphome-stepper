@@ -14,8 +14,17 @@ esphome:
   on_shutdown:
     then:
       lambda: |-
-        get_controller(id(${controller}))->disable_motor();
-    
+        //get_controller(id(${controller}))->disable_motor();
+        get_controller(id(${controller}))->on_button_stop();
+
+  on_boot:
+    priority: -300 # Highest priority, ensures enable pin to be turned off first
+    then:
+      - lambda: |-
+            if (id(motor_enabled) == true) {
+                get_controller(id(${controller}))->enable_motor();
+            }
+      
 stepper:
   - platform: a4988
     id: ${stepper_motor_id}
@@ -67,7 +76,8 @@ ota:
   on_begin:
     then:
       lambda: |-
-        get_controller(id(${controller}))->disable_motor();
+        //get_controller(id(${controller}))->disable_motor();
+        get_controller(id(${controller}))->on_button_stop();
 
 binary_sensor:
   - platform: template
@@ -131,20 +141,32 @@ binary_sensor:
         lambda: |-
           get_controller(id(${controller}))->proximity_switch_pinion_wheel_released();
           
+globals:
+  - id: motor_enabled
+    type: bool
+    restore_value: yes
+    initial_value: "false" 
     
 switch:     
-           
+          
   - platform: template
     name: ${stepper_motor_id_upper}.enable_motor
     id: ${stepper_motor_id}_enable_motor
     lambda: |-
-      return get_controller(id(${controller}))->motor_enabled();
+       if (id(motor_enabled) == true)
+         return true;
+       else
+         return false;
+    #lambda: |-
+    #  return get_controller(id(${controller}))->motor_enabled();
     turn_on_action:
       - lambda: |- 
           get_controller(id(${controller}))->enable_motor();
+          id(motor_enabled) = true;
     turn_off_action:
       - lambda: |- 
           get_controller(id(${controller}))->disable_motor();
+          id(motor_enabled) = false;
 
   - platform: template
     name: ${stepper_motor_id_upper}.start_automation
